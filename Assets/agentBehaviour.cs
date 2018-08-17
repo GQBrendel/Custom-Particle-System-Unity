@@ -5,6 +5,7 @@ using UnityEngine;
 public class agentBehaviour : MonoBehaviour {
 
     public Transform destinationTarget;
+    public Transform circularReference;
 
 	// Use this for initialization
 	void Start () {
@@ -16,7 +17,17 @@ public class agentBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        transform.position = moveToPosition(transform.position, destinationTarget.position, 0.5f);
+        ///Move linear
+        //transform.position = moveToPosition(transform.position, destinationTarget.position, 0.5f);
+
+        //Move in circles
+        circulate();
+    }
+
+    void circulate()
+    {
+        transform.position = moveToPosition(transform.position, circularReference.position, 0.5f);
+
     }
 
     void lookToPosition(Transform destination)
@@ -25,7 +36,7 @@ public class agentBehaviour : MonoBehaviour {
          Thanks Mike for help with the solution at: https://forum.unity.com/threads/implementing-a-manual-lookat.120308/
          */
 
-             Vector3 viewForward = Vector3.zero;
+            Vector3 viewForward = Vector3.zero;
             Vector3 viewUp = Vector3.zero;
             Vector3 viewRight = Vector3.zero;
 
@@ -36,17 +47,13 @@ public class agentBehaviour : MonoBehaviour {
             // normalize viewVector
             viewForward.Normalize();
 
-
-
+        
             // Now we get the perpendicular projection of the viewForward vector onto the world up vector
             // Uperp = U - ( U.V / V.V ) * V
             viewUp = Vector3.up - (Vector3.Project(viewForward, Vector3.up));
             viewUp.Normalize();
 
-            // Alternatively for getting viewUp you could just use:
-            // viewUp = thisTransform.TransformDirection(thisTransform.up);
-            // viewUp.Normalize();
-
+            
 
             // Calculate rightVector using Cross Product of viewOut and viewUp
             // this is order is because we use left-handed coordinates
