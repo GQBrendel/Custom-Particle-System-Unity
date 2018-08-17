@@ -16,7 +16,7 @@ public class agentBehaviour : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-
+        transform.position = moveToPosition(transform.position, destinationTarget.position, 0.5f);
     }
 
     void lookToPosition(Transform destination)
@@ -59,4 +59,18 @@ public class agentBehaviour : MonoBehaviour {
             transform.forward = new Vector3(viewForward.x, viewForward.y, viewForward.z);
       
     }
+
+    // Vector3.MoveTowards
+    Vector3 moveToPosition(Vector3 currentPosition, Vector3 destination, float speed)
+    {
+        Vector3 positionsDifference = destination - currentPosition;
+
+        float magnitude = positionsDifference.magnitude;
+        if (magnitude <= speed || magnitude == 0f)
+        {
+            return destination;
+        }
+        return currentPosition + positionsDifference / magnitude * speed;
+    }
+
 }
