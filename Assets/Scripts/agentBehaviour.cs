@@ -1,24 +1,19 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
+using System.Linq;
 
 
 public class agentBehaviour : MonoBehaviour {
 
     public Transform destinationTarget;
-
-    public Transform circle1, circle2, circle3, circle4;
-
-    public float factor = 0f;
+    
+    public List<Transform> circlePoints;
+    
     int currentCirclePos;
-
-    [Range(1.0f, 100f)]
-    public float width = 5;
-    [Range(1.0f, 100f)]
-    public float height = 5;
-    [Range(1.0f, 100f)]
-    public float speed = 5;
+    
+    [Range(0.0f, 10f)]
+    public float speed = 0.2f;
     
     private Transform nextPoint;
 
@@ -27,34 +22,40 @@ public class agentBehaviour : MonoBehaviour {
 
     void Start () {
         startPos = transform.position;
-        currentCirclePos = 1;
+        currentCirclePos = 0;
        
-        nextPoint = circle1;
+        //nextPoint = circle1;
+
+        foreach (GameObject point in GameObject.FindGameObjectsWithTag("circlePoint"))
+        {
+           // point.name = "circle" + currentCirclePos;
+            circlePoints.Add(point.transform);
+            currentCirclePos++;
+        }
+        //circlePoints = circlePoints.OrderBy(go => go.name).ToList();
+
+        nextPoint = circlePoints[0];
+        currentCirclePos = 0;
+
 
       //  Instantiate(startPosPrefab, this.transform.position, Quaternion.identity);
     }
     void moveInCirclePath()
     {
         lookToPosition(nextPoint);
-        transform.position = moveToPosition(transform.position, nextPoint.position, 0.5f);
+        transform.position = moveToPosition(transform.position, nextPoint.position, speed);
 
-        if (Vector3.Distance(transform.position, nextPoint.position) < 2f)
+        if (Vector3.Distance(transform.position, nextPoint.position) < 0.1f)
         {
-            if (nextPoint == circle1)
+            if(nextPoint == circlePoints[circlePoints.Count-1])
             {
-                nextPoint = circle2;
+                nextPoint = circlePoints[0];
+                currentCirclePos = 0;
             }
-            else if (nextPoint == circle2)
+            else if (nextPoint == circlePoints[currentCirclePos])
             {
-                nextPoint = circle3;
-            }
-            else if (nextPoint == circle3)
-            {
-                nextPoint = circle4;
-            }
-            else if (nextPoint == circle4)
-            {
-                nextPoint = circle1;
+                currentCirclePos++;
+                nextPoint = circlePoints[currentCirclePos];
             }
         }
     }
@@ -69,30 +70,6 @@ public class agentBehaviour : MonoBehaviour {
 
         // Move circle with defined path
         moveInCirclePath();
-    }
-
-    void circleAroundPosition()
-    {
-
-
-        lookToPosition(destinationTarget);
-
-        timeCounter += Time.deltaTime * speed;
-
-        float x = startPos.x + Mathf.Cos (timeCounter) * width;
-        float y = startPos.y;
-        float z = startPos.z + Mathf.Sin (timeCounter) * height;
-        transform.position = new Vector3(x, y, z);
-        
-
-       // transform.rotation = new Quaternion(x, y + 90,
-         //   z, transform.rotation.w);
-
-        //lookToPosition(startPosPrefab);
-        //270;
-        
-
-
     }
     void lookToPosition(Transform destination)
     {
@@ -125,9 +102,9 @@ public class agentBehaviour : MonoBehaviour {
 
 
             // set new vectors
-            transform.right = new Vector3(viewRight.x, viewRight.y, viewRight.z +factor);
-            transform.up = new Vector3(viewUp.x, viewUp.y , viewUp.z + factor);
-            transform.forward = new Vector3(viewForward.x, viewForward.y, viewForward.z + factor);
+            transform.right = new Vector3(viewRight.x, viewRight.y, viewRight.z);
+            transform.up = new Vector3(viewUp.x, viewUp.y , viewUp.z);
+            transform.forward = new Vector3(viewForward.x, viewForward.y, viewForward.z);
       
     }
     // Vector3.MoveTowards
