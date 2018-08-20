@@ -13,15 +13,10 @@ public class agentBehaviour : MonoBehaviour {
     int currentCirclePos;
     
     [Range(0.0f, 10f)]
-    public float speed = 0.2f;
-    
+    public float speed = 0.2f;    
     private Transform nextPoint;
-
-    float timeCounter = 0;
-    Vector3 startPos;
-
+    
     void Start () {
-        startPos = transform.position;
         currentCirclePos = 0;
        
         //nextPoint = circle1;
@@ -32,7 +27,7 @@ public class agentBehaviour : MonoBehaviour {
             circlePoints.Add(point.transform);
             currentCirclePos++;
         }
-        //circlePoints = circlePoints.OrderBy(go => go.name).ToList();
+        circlePoints = circlePoints.OrderBy(go => go.GetComponent<idKeeper>().id).ToList();
 
         nextPoint = circlePoints[0];
         currentCirclePos = 0;

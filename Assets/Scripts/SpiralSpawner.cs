@@ -8,7 +8,6 @@ public class SpiralSpawner : MonoBehaviour {
     public int perfection;
     int numberOfPoints;
     public GameObject circlePointPrefab;
-    public float offset;
 
 
     void Awake()
@@ -25,7 +24,8 @@ public class SpiralSpawner : MonoBehaviour {
             GameObject instance =
             Instantiate(circlePointPrefab, transform.position + pos, Quaternion.identity) as GameObject;
             instance.transform.parent = transform;
-            
+            instance.GetComponent<idKeeper>().id = i;
+
         }
         
     }

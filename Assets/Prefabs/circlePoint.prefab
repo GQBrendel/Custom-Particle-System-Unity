@@ -21,8 +21,9 @@ GameObject:
   - component: {fileID: 4624602967502490}
   - component: {fileID: 33351058602167096}
   - component: {fileID: 23110365058319762}
+  - component: {fileID: 114930555578076918}
   m_Layer: 0
-  m_Name: circle59
+  m_Name: circlePoint
   m_TagString: circlePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -47,7 +48,7 @@ MeshRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792174050509324}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -82,3 +83,15 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1792174050509324}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114930555578076918
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1792174050509324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8159874fc867b2f4289c16516c4a12c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id: 0

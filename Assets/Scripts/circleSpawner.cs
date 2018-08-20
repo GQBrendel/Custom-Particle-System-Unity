@@ -17,11 +17,13 @@ public class circleSpawner : MonoBehaviour {
         for (int i = 0; i < numberOfPoints; i++)
         {
               circlePointPrefab.name = "circle" + i;
+
             float angle = i * Mathf.PI * 2 / numberOfPoints;
             Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
             GameObject instance = 
             Instantiate(circlePointPrefab, transform.position + pos, Quaternion.identity) as GameObject;
             instance.transform.parent = transform;
+            instance.GetComponent<idKeeper>().id = i;
 
 
         }
