@@ -3,25 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(ParticlesSettings))]
-public class LineParticleEmitter : MonoBehaviour {
+public class LineParticleEmitter : ParticleEmitter {
 
-
-
-    [Range(0f,3f)]
-    public float spawnTimer;
-    [Range(0f, 5f)]
-    public float lifeTime;
-    [Range(0f, 20f)]
-    public float speed;
-    Particle selectedParticle;
-    [HideInInspector]
-    public List<Particle> particles;
-    ParticlesSettings settings;
-
-    
 
 	void Start () {
-
         settings = GetComponent<ParticlesSettings>();
         StartCoroutine(spawnParticle());
     }
@@ -34,10 +19,6 @@ public class LineParticleEmitter : MonoBehaviour {
             {
                 particles.Remove(particle);
                 Destroy(particle.gameObject);
-            }
-            else
-            {
-              //  particle.transform.position += Vector3.forward;
             }
         }
 	}

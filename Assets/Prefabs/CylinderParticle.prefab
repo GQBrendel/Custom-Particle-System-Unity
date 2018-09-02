@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114519635810739562}
   - component: {fileID: 54474320155875314}
   m_Layer: 0
-  m_Name: CylinderParticle
+  m_Name: circle29
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -121,7 +121,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1175492901105148}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 2
   m_Direction: 1

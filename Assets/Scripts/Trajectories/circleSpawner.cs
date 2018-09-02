@@ -24,8 +24,6 @@ public class circleSpawner : MonoBehaviour {
             Instantiate(circlePointPrefab, transform.position + pos, Quaternion.identity) as GameObject;
             instance.transform.parent = transform;
             instance.GetComponent<idKeeper>().id = i;
-
-
         }
     }
 }

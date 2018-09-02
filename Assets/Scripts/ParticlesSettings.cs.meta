@@ -1,0 +1,20 @@
+fileFormatVersion: 2
+guid: 5fe50640d17c9ad47882bac505bdd912
+timeCreated: 1535845550
+licenseType: Free
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - sphereParticle: {fileID: 114817689695942270, guid: 264c3bc7c404037479f9bde8a3ff1848,
+      type: 2}
+  - cubeParticle: {fileID: 114535732557134326, guid: c3d9cf8e59982914393919c1ae9bf63c,
+      type: 2}
+  - cylinderParticle: {fileID: 114519635810739562, guid: 8f9183bd2acd5954cbdbc4103fab7ddf,
+      type: 2}
+  - particleMaterial: {fileID: 2100000, guid: a3f65c9d8f37d2947a69fd794ef04793, type: 2}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
