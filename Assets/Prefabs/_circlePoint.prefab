@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 23110365058319762}
   - component: {fileID: 114930555578076918}
   m_Layer: 0
-  m_Name: circle104
+  m_Name: _circlePoint
   m_TagString: circlePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
