@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 114817689695942270}
   - component: {fileID: 54924471378898336}
   m_Layer: 0
-  m_Name: circle29
+  m_Name: SphereParticle
   m_TagString: circlePoint
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

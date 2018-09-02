@@ -5,8 +5,10 @@ using UnityEngine;
 [RequireComponent(typeof(ParticlesSettings))]
 public class LineParticleEmitter : ParticleEmitter {
 
+    [Range(0f, 5f)]
+    public float lifeTime;
 
-	void Start () {
+    void Start () {
         settings = GetComponent<ParticlesSettings>();
         StartCoroutine(spawnParticle());
     }

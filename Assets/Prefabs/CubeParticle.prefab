@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114535732557134326}
   - component: {fileID: 54146543556482636}
   m_Layer: 0
-  m_Name: circle29
+  m_Name: CubeParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

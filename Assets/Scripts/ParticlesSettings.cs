@@ -24,7 +24,6 @@ public class ParticlesSettings : MonoBehaviour {
 
     }
   
-	// Update is called once per frame
 	void Update () {
         particleMaterial.color = particleColor;
         scaleFactor = new Vector3(scale, scale, scale);

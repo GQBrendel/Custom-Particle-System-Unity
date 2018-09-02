@@ -16,14 +16,14 @@ public class Particle : MonoBehaviour {
     public bool shouldDie()
     {
         return livedTime >= lifeTime;
-    }	
+    }
+    public void destroyParticle()
+    {
+        Destroy(gameObject);
+    }
 
 	void Update () {
 
         livedTime += Time.deltaTime;
 	}
-
-
-
-
 }

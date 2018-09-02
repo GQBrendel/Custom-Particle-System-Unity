@@ -7,10 +7,9 @@ using UnityEngine;
 public class CircleParticleEmmiter : ParticleEmitter {
 
     public int numberOfPoints;
+    [Range(0f, 5f)]
+    public float lifeTime;
 
-    public float radius;
-   // int n = 0;
-    // Use this for initialization
     void Start () {
 
         settings = GetComponent<ParticlesSettings>();
@@ -18,24 +17,17 @@ public class CircleParticleEmmiter : ParticleEmitter {
 
     }
 	
-	// Update is called once per frame
 	void Update () {
 
         selectedParticle = settings.getSelectedParticle();
-        
-        foreach (Particle particle in particles)
+        if(particles.Count > 0 && particles[0].shouldDie())
         {
-           // float angle = /*n **/ Mathf.PI * 2 / numberOfPoints;
-           // Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * (radius/*+n*/);
-           // particle.transform.position = pos;
-            if (particle.shouldDie())
+            for (int i = 0; i < numberOfPoints; i++)
             {
-                particles.Remove(particle);
-                Destroy(particle.gameObject);
+                particles[i].destroyParticle();
             }
-//            n++;
+            particles.RemoveRange(0, numberOfPoints);
         }
-
     }
     IEnumerator spawnParticle()
     {
@@ -43,19 +35,18 @@ public class CircleParticleEmmiter : ParticleEmitter {
 
         for (int i = 0; i < numberOfPoints; i++)
         {
-            selectedParticle.gameObject.name = "circle" + i;
-
             float angle = i * Mathf.PI * 2 / numberOfPoints;
-            Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle)) * radius;
+            Vector3 pos = new Vector3(Mathf.Cos(angle), 0, Mathf.Sin(angle));// * radius;
             Particle instance =
             Instantiate(selectedParticle, transform.position + pos, Quaternion.identity) as Particle;
-            instance.transform.parent = transform;
+            //instance.transform.parent = transform;
 
-            particles.Add(instance);
+            
 
-            instance.lifeTime = lifeTime;
+            instance.GetComponent<Particle>().lifeTime = lifeTime;
 
             instance.GetComponent<Rigidbody>().velocity = pos * speed;
+            particles.Add(instance);
         }
         StartCoroutine(spawnParticle());
 
