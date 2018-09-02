@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[RequireComponent(typeof(ParticlesSettings))]
 public class CircleParticleEmmiter : MonoBehaviour {
 
 	// Use this for initialization
