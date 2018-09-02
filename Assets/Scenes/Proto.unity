@@ -341,7 +341,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &428354326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -353,6 +353,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daf0fb37d53ae0949927aebd1ebb37d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  spawnTimer: 1.11
+  speed: 4
+  selectedParticle: {fileID: 0}
+  particles: []
+  settings: {fileID: 0}
+  numberOfPoints: 22
+  lifeTime: 2
+  explosionSphereParticle: {fileID: 114817689695942270, guid: 106f43347d15d0b4db9288ee8b31ee38,
+    type: 2}
+  explosionCubeParticle: {fileID: 114535732557134326, guid: c9fbae495c13fad47b79148b76a1eef8,
+    type: 2}
+  explosionCylinderParticle: {fileID: 114519635810739562, guid: a5659fc99dc05db40ae5d3398835fc34,
+    type: 2}
 --- !u!114 &428354327
 MonoBehaviour:
   m_ObjectHideFlags: 0

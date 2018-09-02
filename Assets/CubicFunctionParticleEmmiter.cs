@@ -28,7 +28,7 @@ public class CubicFunctionParticleEmmiter : ParticleEmitter {
             particles.RemoveRange(0, numberOfPoints);
         }
     }
-    IEnumerator spawnParticle()
+    public IEnumerator spawnParticle()
     {
         yield return new WaitForSeconds(spawnTimer);
 
